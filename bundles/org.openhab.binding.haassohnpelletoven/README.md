@@ -15,34 +15,41 @@ WIFI module. More information about the WIFI module can be found here: https://w
 In general two parameters are required. The IP-Address of the WIFI-Modul of the Stove in the local Network and the Access PIN of the Stove.
 The PIN can be found directly at the stove under the Menue/Network/WLAN-PIN
 
-```Thing haassohnpelletoven:oven:myOven "Pelletstove"  [ hostIP="192.168.0.23", hostPIN="1234"]
+Thing haassohnpelletoven:oven:myOven "Pelletstove" @"Roomname" [ hostIP="192.168.0.23", hostPIN="1234", refreshRate="30"]
 
 ## Channels
 
 The following channels are yet supported:
 
-| channel  		  		| type               | description                                              					  |
+| channel  		  		    | type               | description                                              					            |
 |-----------------------|--------------------|--------------------------------------------------------------------------------|
-| channelPrg      		| Switch 	 	     | Turn the stove on/off		                              					  |
-| channelIsTemp   		| Number:Temperature | Receives the actual temperature of the stove	          						  |
-| channelSpTemp   		| Number:Temperature | Receives and sets the target temperature of the stove	  					  |
-| channelMode     		| String             | Receives the actual mode the stove is in like heating, cooling, error, ....	  |
-| channelEcoMode  		| Switch             | Turn the eco mode of the stove on/off	  									  |
-| channelIngitions		| String             | Amount of ignition's of the stove											  |
-| channelMaintenanceIn	| String             | States the next maintenance in kg											  |
-| channelCleaningIn     | String             | States the next cleaning window in hours										  |
-| channelConsumption    | String             | Total consumption of the stove												  |
-| channelOnTime     	| String             | Operation hours of the stove													  |
+| channelPrg      		  | Switch 	 	         | Turn the stove on/off		                              					              |
+| channelIsTemp   		  | Number:Temperature | Receives the actual temperature of the stove	          						            |
+| channelSpTemp   		  | Number:Temperature | Receives and sets the target temperature of the stove	  					            |
+| channelMode     		  | String             | Receives the actual mode the stove is in like heating, cooling, error .... 	  |
+| channelEcoMode  		  | Switch             | Turn the eco mode of the stove on/off	  									                    |
+| channelIngitions		  | Number             | Amount of ignition's of the stove											                        |
+| channelMaintenanceIn	| Number             | States the next maintenance in kg											                        |
+| channelCleaningIn     | Number             | States the next cleaning window in hours								                		    |
+| channelConsumption    | Number             | Total consumption of the stove												                          |
+| channelOnTime     	  | Number             | Operation hours of the stove												                        	  |
 
 ## Full Example
 
 demo.items:
 
 ```
-Number:Temperature isTemp { channel="oven:channelIsTemp" }
-Number:Temperature spTemp { channel="oven:channelSpTemp" }
-String mode { channel="oven:channelMode" }
-Switch prg { channel="oven:channelPrg" }
+Switch                  prg             { channel="haassohnpelletoven:oven:myOven:channelPrg" }
+Switch                  ecoMode         { channel="haassohnpelletoven:oven:myOven:channelEcoMode" }
+Number:Temperature      isTemp          { channel="haassohnpelletoven:oven:myOven:channelIsTemp" }
+Number:Temperature      spTemp          { channel="haassohnpelletoven:oven:myOven:channelSpTemp" }
+String                  mode            { channel="haassohnpelletoven:oven:myOven:channelMode" }
+Number                  cleaningIn      { channel="haassohnpelletoven:oven:myOven:channelCleaningIn" }
+Number                  maintainceIn    { channel="haassohnpelletoven:oven:myOven:channelMaintainceIn" }
+Number                  ignitions       { channel="haassohnpelletoven:oven:myOven:channelIgnitions" }
+Number                  consumption     { channel="haassohnpelletoven:oven:myOven:channelConsumption" }
+Number                  onTime          { channel="haassohnpelletoven:oven:myOven:channelOnTime" }
+
 ```
 
 ## Tested Hardware
