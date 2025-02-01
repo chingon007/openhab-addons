@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2010-2024 Contributors to the openHAB project
+/*
+ * Copyright (c) 2010-2025 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -26,5 +26,4 @@ public class HaasSohnpelletstoveConfiguration {
     public @Nullable String hostIP = null;
     public @Nullable String hostPIN = null;
     public int refreshRate = 30;
-    public int reconnectRate = 1000;
 }
